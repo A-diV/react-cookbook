@@ -1,38 +1,63 @@
+body {
+  font-family: 'Open Sans';
+}
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sitename {
+  color: brown;
+  font-family: cursive;
+  font-weight: bolder;
+  padding-left: 5rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#iconSize {
+  font-size: 2rem;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.links {
+  list-style-type: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: aliceblue;
+}
+.links li {
+  margin: 0 10px;
+}
+div,
+.card {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.App-link {
-  color: #61dafb;
+/* Animatio for fading */
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  /* transform: translateX(1000px); */
+  transition: opacity 1000ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+  /* transform: translateX(0); */
+  transition: opacity 1000ms ease-in;
+}
+.item-exit-active {
+  opacity: 0.01;
+  /* transform: translateX(1000px); */
+  transition: opacity 1000ms ease-in;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Register */
+form:before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  background-color: rgba(30, 185, 43, 0.295);
+  z-index: -1;
+  border-radius: 10px;
 }
