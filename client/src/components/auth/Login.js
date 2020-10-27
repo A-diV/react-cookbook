@@ -18,33 +18,44 @@ const Login = () => {
     //<section className='min-vh-100'>
     <div className='container'>
       <div className='row'>
-        <div className='col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 mt-5'>
+        <div className='col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto form p-4 mt-5'>
           <div className='px-2 '>
-            <form action=''>
-              <h1 className='text-black-50'>
+            <form onSubmit={onSubmit}>
+              <h1 className='text-black-50 text-center '>
                 Account <span className='text-success'>Login</span>
               </h1>
               <div className='form-group'>
+                <label htmlFor='email'>Email Address:</label>
                 <input
-                  type='text'
                   className='form-control'
+                  type='text'
+                  id='email'
+                  name='email'
                   placeholder='Email'
+                  value={email}
+                  onChange={onChange}
                 />
               </div>
               <div className='form-group'>
+                <label htmlFor='password'>Password:</label>
                 <input
-                  type='text'
                   className='form-control'
+                  type='text'
+                  id='password'
+                  name='password'
                   placeholder='Password'
+                  value={password}
+                  onChange={onChange}
                 />
               </div>
               <div className='form-group'>
-                <input
+                <button
                   type='submit'
-                  onSubmit={onSubmit}
-                  value='Login'
-                  className='btn btn-success btn-block'
-                />
+                  //value='Login'
+                  className='btn btn-outline-success btn-block'
+                >
+                  Login
+                </button>
               </div>
             </form>
           </div>
