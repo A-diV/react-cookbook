@@ -1,10 +1,10 @@
 import {
-  //ADD_RECIPE,
+  ADD_RECIPE,
   DELETE_RECIPE,
   FILTER_RECIPES,
   CLEAR_FILTER,
-  //SET_ALERT,
-  //REMOVE_ALERT,
+  SET_ALERT,
+  REMOVE_ALERT,
 } from '../types';
 
 const recipeReducer = (state, action) => {

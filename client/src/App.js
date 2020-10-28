@@ -10,10 +10,16 @@ import Alerts from './components/layout/Alerts';
 import RecipeState from './context/recipe/RecipeState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import PrivateRoute from './components/routing/PrivateRoute';
 
+import setAuthToken from './utils/setAuthToken';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 //import RecipeContext from './context/recipe/RecipeState';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   return (
@@ -26,7 +32,7 @@ const App = () => {
               <div className='container'>
                 <Alerts />
                 <Switch>
-                  <Route exact path='/' component={Home} />
+                  <PrivateRoute exact path='/' component={Home} />
                   <Route exact path='/about' component={About} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />

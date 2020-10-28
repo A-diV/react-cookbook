@@ -4,6 +4,9 @@ body {
 .App {
   text-align: center;
 }
+.userName {
+  color: brown;
+}
 .sitename {
   color: brown;
   font-family: cursive;

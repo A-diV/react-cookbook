@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 //mport RecipeState from '../../context/recipe/RecipeState';
 import Recipes from '../recipes/Recipes';
 import RecipeFilter from '../recipes/RecipeFilter';
+import AuthContext from '../../context/auth/authContext';
 
 const Home = () => {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    authContext.loadUser();
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className='container-fluid'>
       <div className='row justify-content-center'>

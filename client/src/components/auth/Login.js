@@ -1,6 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect, createRef } from 'react';
+import AuthContext from '../../context/auth/authContext';
+import AlertContext from '../../context/alert/alertContext';
 
-const Login = () => {
+const Login = (props) => {
+  const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+    if (error === 'Invalid Credentials') {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
+
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -12,8 +31,30 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('Login submit');
+    if (email === '' || password === '') {
+      setAlert('Please fill in all fields', 'danger');
+    } else {
+      login({
+        email,
+        password,
+      });
+    }
   };
+
+  const ref = createRef();
+
+  const showHidePassword = (e) => {
+    e.preventDefault();
+    if (e.target.className === 'fa fa-eye-slash') {
+      e.target.className = '';
+      ref.current.type = 'text';
+      e.target.className = 'fa fa-eye';
+    } else {
+      ref.current.type = 'password';
+      e.target.className = 'fa fa-eye-slash';
+    }
+  };
+
   return (
     //<section className='min-vh-100'>
     <div className='container'>
@@ -34,19 +75,27 @@ const Login = () => {
                   placeholder='Email'
                   value={email}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className='form-group'>
                 <label htmlFor='password'>Password:</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  id='password'
-                  name='password'
-                  placeholder='Password'
-                  value={password}
-                  onChange={onChange}
-                />
+                <div className='input-group'>
+                  <input
+                    ref={ref}
+                    className='form-control'
+                    type='password'
+                    id='password'
+                    name='password'
+                    placeholder='Password'
+                    value={password}
+                    onChange={onChange}
+                    required
+                  />
+                  <span onClick={showHidePassword} className='input-group-text'>
+                    <i className='fa fa-eye-slash'></i>
+                  </span>
+                </div>
               </div>
               <div className='form-group'>
                 <button
@@ -62,7 +111,8 @@ const Login = () => {
         </div>
       </div>
     </div>
-    //</section>
+    //
+    // </section>
   );
 };
 
