@@ -4,7 +4,7 @@ import Recipes from '../recipes/Recipes';
 import RecipeFilter from '../recipes/RecipeFilter';
 import AuthContext from '../../context/auth/authContext';
 
-const Home = () => {
+const SavedRecipes = () => {
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
@@ -53,4 +53,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SavedRecipes;

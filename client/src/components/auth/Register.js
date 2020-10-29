@@ -141,7 +141,7 @@ const Register = (props) => {
                 <button
                   type='submit'
                   //value='Register'
-                  className='btn btn-outline-success btn-block'
+                  className=' cust-btn btn btn-block'
                 >
                   Register
                 </button>

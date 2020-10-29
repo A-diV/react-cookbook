@@ -64,3 +64,91 @@ form:before {
   z-index: -1;
   border-radius: 10px;
 }
+
+/*############################################*/
+.cust-btn {
+  background-color: #35a55b;
+  border-width: 2px;
+  border-color: #35a55b;
+  color: #fff;
+}
+.cust-btn:hover {
+  border-color: #35a55b;
+  background-color: #fff;
+  color: #35a55b;
+  border-radius: 20px;
+  transform-style: 2s;
+}
+/*############################################*/
+/* Navigation links */
+@media all and (min-width: 992px) {
+  .navLink:hover {
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .navLink,
+  .navLink:after,
+  .navLink:before {
+    transition: all 0.5s;
+  }
+}
+/*############################################*/
+/* The radio */
+.radio {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  padding-right: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+/* Create a custom radio button */
+.checkround {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border-color: #2daf1c;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50%;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkround:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+/* When the radio button is checked, add a blue background */
+/* .radio input:checked ~ .checkround {
+  background-color: #fff;
+} */
+/* Show the indicator (dot/circle) when checked */
+.radio input:checked ~ .checkround:after {
+  display: block;
+}
+/* Style the indicator (dot/circle) */
+.radio .checkround:after {
+  left: 2px;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2daf1c;
+}

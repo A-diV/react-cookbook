@@ -101,7 +101,7 @@ const Login = (props) => {
                 <button
                   type='submit'
                   //value='Login'
-                  className='btn btn-outline-success btn-block'
+                  className='cust-btn btn btn-block'
                 >
                   Login
                 </button>
