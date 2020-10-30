@@ -63,10 +63,12 @@ const Login = (props) => {
           <div className='px-2 '>
             <form onSubmit={onSubmit}>
               <h1 className='text-black-50 text-center '>
-                Account <span className='text-success'>Login</span>
+                Account <span className='text-white'>Login</span>
               </h1>
               <div className='form-group'>
-                <label htmlFor='email'>Email Address:</label>
+                <label className='text-white' htmlFor='email'>
+                  Email Address:
+                </label>
                 <input
                   className='form-control'
                   type='text'
@@ -79,7 +81,9 @@ const Login = (props) => {
                 />
               </div>
               <div className='form-group'>
-                <label htmlFor='password'>Password:</label>
+                <label className='text-white' htmlFor='password'>
+                  Password:
+                </label>
                 <div className='input-group'>
                   <input
                     ref={ref}

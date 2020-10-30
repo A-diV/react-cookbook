@@ -12,9 +12,7 @@ const recipeReducer = (state, action) => {
     case DELETE_RECIPE:
       return {
         ...state,
-        recipes: state.recipes.filter(
-          (recipe) => recipe._id !== action.payload
-        ),
+        recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
       };
     case FILTER_RECIPES:
       return {

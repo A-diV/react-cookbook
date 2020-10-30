@@ -14,19 +14,22 @@ function Navbar({ title, icon }) {
 
   const authLinks = (
     <Fragment>
+      <li>
+        <Link className='navLink text-white' to='/search'>
+          Search
+        </Link>
+      </li>
       <li className='userName'>
         {' '}
-        Hello {user && user.name}
-        {': '}
+        {/* {user && 'My'}{' '} */}
         <Link className='navLink text-white' to='/'>
-          {/* <button className='btn btn-danger btn-sm'>Your recipes</button> */}
-          saved recipes
+          Saved recipes
         </Link>
       </li>
       <li>
-        <a onClick={onLogout} href='#!'>
+        <a className='navLink' onClick={onLogout} href='#!'>
           <i className='fas fa-sign-out-alt text-white'></i>
-          <span className='navLink hide-sm text-white'>Logout</span>
+          <span className=' hide-sm text-white'>Logout</span>
         </a>
       </li>
     </Fragment>
@@ -36,7 +39,6 @@ function Navbar({ title, icon }) {
     <Fragment>
       <li>
         <Link className='navLink text-white' to='/search'>
-          {/* <button className='btn btn-danger btn-sm'>Your recipes</button> */}
           Search
         </Link>
       </li>
@@ -53,8 +55,8 @@ function Navbar({ title, icon }) {
   );
 
   return (
-    <div className='navbar bg-success'>
-      <h1 className='sitename'>
+    <div className='navbar bg-dark'>
+      <h1 className='sitename text-white'>
         <i id='iconSize' className={icon} /> {title}
       </h1>
       <ul className='links'>{isAuthenticated ? authLinks : guestLinks}</ul>

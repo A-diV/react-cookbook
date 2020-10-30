@@ -1,12 +1,16 @@
 body {
   font-family: 'Open Sans';
+  background-color: dimgray;
+}
+.jumbotron {
+  background-color: dimgray;
 }
 .App {
   text-align: center;
 }
-.userName {
+/* .userName {
   color: brown;
-}
+} */
 .sitename {
   color: brown;
   font-family: cursive;
@@ -32,24 +36,24 @@ div,
 }
 
 /* Animatio for fading */
-.item-enter {
+/* .item-enter {
   opacity: 0;
 }
 .item-enter-active {
   opacity: 1;
-  /* transform: translateX(1000px); */
+
   transition: opacity 1000ms ease-in;
 }
 .item-exit {
   opacity: 1;
-  /* transform: translateX(0); */
+
   transition: opacity 1000ms ease-in;
 }
 .item-exit-active {
   opacity: 0.01;
-  /* transform: translateX(1000px); */
+
   transition: opacity 1000ms ease-in;
-}
+} */
 
 /* Register */
 form:before {
@@ -60,39 +64,51 @@ form:before {
   top: 0;
   width: 100%;
   /* background-color: rgba(0, 0, 0, 0.3); */
-  background-color: rgba(30, 185, 43, 0.295);
+  background-color: rgba(166, 172, 167, 0.295);
   z-index: -1;
   border-radius: 10px;
 }
 
 /*############################################*/
 .cust-btn {
-  background-color: #35a55b;
+  /* background-color: #35a55b; */
+  background-color: #101110;
   border-width: 2px;
-  border-color: #35a55b;
+  border-color: #101110;
   color: #fff;
 }
 .cust-btn:hover {
-  border-color: #35a55b;
+  border-color: #101110;
   background-color: #fff;
-  color: #35a55b;
+  color: #101110;
   border-radius: 20px;
   transform-style: 2s;
 }
+.view-btn:hover,
+.delete-btn:hover {
+  border-radius: 20px;
+  transform-style: 2s;
+}
+
+.embed-responsive .card-img-top {
+  object-fit: cover;
+}
+
 /*############################################*/
 /* Navigation links */
-@media all and (min-width: 992px) {
-  .navLink:hover {
-    text-decoration: none;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
-  .navLink,
-  .navLink:after,
-  .navLink:before {
-    transition: all 0.5s;
-  }
+/* @media all and (min-width: 992px) { */
+.navLink:hover {
+  text-decoration: none;
+  /* color: brown !important; */
+  /* font-weight: 400; */
+  text-transform: uppercase;
 }
+.navLink,
+.navLink:after,
+.navLink:before {
+  transition: all 0.5s;
+}
+/* } */
 /*############################################*/
 /* The radio */
 .radio {
@@ -123,7 +139,7 @@ form:before {
   height: 20px;
   width: 20px;
   background-color: #fff;
-  border-color: #2daf1c;
+  border-color: #0a0a0a;
   border-style: solid;
   border-width: 2px;
   border-radius: 50%;
@@ -135,10 +151,7 @@ form:before {
   position: absolute;
   display: none;
 }
-/* When the radio button is checked, add a blue background */
-/* .radio input:checked ~ .checkround {
-  background-color: #fff;
-} */
+
 /* Show the indicator (dot/circle) when checked */
 .radio input:checked ~ .checkround:after {
   display: block;
@@ -150,5 +163,11 @@ form:before {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #2daf1c;
+  background: #0a0a0a;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }

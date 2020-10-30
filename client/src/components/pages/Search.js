@@ -11,7 +11,7 @@ const Search = () => {
     <div>
       <div className='d-flex row mt-2'>
         <div className='col-md-12'>
-          <label className='radio'>
+          <label className='radio text-white'>
             Search by recipe name
             <input
               type='radio'
@@ -23,7 +23,7 @@ const Search = () => {
             />
             <span className='checkround'></span>
           </label>
-          <label className='radio'>
+          <label className='radio text-white'>
             Search by ingrediant
             <input
               type='radio'
@@ -35,7 +35,7 @@ const Search = () => {
             />
             <span className='checkround'></span>
           </label>
-          <label className='radio'>
+          <label className='radio text-white'>
             Customized search
             <input
               type='radio'

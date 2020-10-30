@@ -16,7 +16,7 @@ const RecipeState = (props) => {
     recipes: [
       {
         healthLabel: 'health',
-        _id: '5f8ef1e6bac15c8723c16493',
+        id: '5f8ef1e6bac15c8723c16493',
         label: 'Apple123',
         image: 'IMG000',
         url: 'URL',
@@ -25,7 +25,7 @@ const RecipeState = (props) => {
       },
       {
         healthLabel: 'health',
-        _id: '5f8ef206bac15c8723c16494',
+        id: '5f8ef206bac15c8723c16494',
         label: 'Pear',
         image: 'IMGvvv',
         url: 'URL',
@@ -34,7 +34,7 @@ const RecipeState = (props) => {
       },
       {
         healthLabel: 'undefined',
-        _id: '5f8ef307f163ff876d819f86',
+        id: '5f8ef307f163ff876d819f86',
         label: 'Plum',
         image: 'IMG0vv',
         url: 'URL',
@@ -50,8 +50,8 @@ const RecipeState = (props) => {
   // ADD Recipe
 
   // Delete Recipe
-  const deleteRecipe = (_id) => {
-    dispatch({ type: DELETE_RECIPE, payload: _id });
+  const deleteRecipe = (id) => {
+    dispatch({ type: DELETE_RECIPE, payload: id });
   };
   // Filter Recipies
   const filterRecipes = (text) => {

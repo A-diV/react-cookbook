@@ -7,6 +7,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 import Search from './components/pages/Search';
+import Footer from './components/layout/Footer';
 
 import RecipeState from './context/recipe/RecipeState';
 import AuthState from './context/auth/AuthState';
@@ -40,6 +41,7 @@ const App = () => {
                   <Route exact path='/login' component={Login} />
                 </Switch>
               </div>
+              <Footer />
             </Fragment>
           </Router>
         </AlertState>

@@ -8,24 +8,28 @@ const Recipes = () => {
 
   const { recipes, filtered } = recipeContex;
   if (recipes.length === 0) {
-    return <h4>Please add a recipe</h4>;
+    return (
+      <div className='col-sm border text-center text-white font-weight-bold font-italic p-2'>
+        <h4>You have no saved recipes</h4>
+      </div>
+    );
   }
 
   return (
     <Fragment>
-      <TransitionGroup>
-        {filtered !== null
-          ? filtered.map((recipe) => (
-              <CSSTransition key={recipe._id} timeout={500} classNames='item'>
-                <RecipeItem recipe={recipe} />
-              </CSSTransition>
-            ))
-          : recipes.map((recipe) => (
-              <CSSTransition key={recipe._id} timeout={500} classNames='item'>
-                <RecipeItem recipe={recipe} />
-              </CSSTransition>
-            ))}
-      </TransitionGroup>
+      {/* <TransitionGroup> */}
+      {filtered !== null
+        ? filtered.map((recipe) => (
+            // <CSSTransition key={recipe.id} timeout={500} classNames='item'>
+            <RecipeItem key={recipe.id} recipe={recipe} />
+            // </CSSTransition>
+          ))
+        : recipes.map((recipe) => (
+            // <CSSTransition key={recipe.id} timeout={500} classNames='item'>
+            <RecipeItem key={recipe.id} recipe={recipe} />
+            // </CSSTransition>
+          ))}
+      {/* </TransitionGroup> */}
     </Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, createRef } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../../context/recipe/recipeContext';
 
@@ -7,26 +7,26 @@ const RecipeItem = ({ recipe }) => {
 
   const { deleteRecipe } = recipeContext;
 
-  const { _id, label, healthLabel, image } = recipe; //url
+  const { id, label, healthLabel, image } = recipe; //url
 
   const onDelete = () => {
-    deleteRecipe(_id);
+    deleteRecipe(id);
   };
 
   if (recipe) {
     return (
       <div className='container-fluid'>
-        <div className='row bg-light mb-3 p-2'>
-          <div className='col'>{image}</div>
+        <div className='row border border-white mb-3 p-2'>
+          <div className='col border border-white'>{image}</div>
           <div className='col'>
-            <h4>{label}</h4>
+            <h4 className='text-white'>{label}</h4>
           </div>
           <div className='col'>
             <h6
               className={
                 'ml-3 badge ' +
                 (healthLabel === 'undefined'
-                  ? 'badge-secondary badge-pill'
+                  ? 'badge-dark badge-pill'
                   : ' badge-success badge-pill')
               }
             >
@@ -34,18 +34,15 @@ const RecipeItem = ({ recipe }) => {
             </h6>
           </div>
           <div className='col text-right'>
-            <button className='btn btn-info btn-sm mr-3'>View</button>
-            <button className='btn btn-danger btn-sm' onClick={onDelete}>
+            <button className='view-btn btn btn-light btn-sm mr-3'>View</button>
+            <button
+              className='delete-btn btn btn-dark  btn-sm'
+              onClick={onDelete}
+            >
               Delete
             </button>
           </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div class='col-sm border text-center bg-light text-danger font-weight-bold font-italic b'>
-        <h4>You have no saved recipes</h4>
       </div>
     );
   }

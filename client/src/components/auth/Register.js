@@ -67,10 +67,12 @@ const Register = (props) => {
           <div className='px-2 '>
             <form onSubmit={onSubmit}>
               <h1 className='text-black-50 text-center'>
-                Account <span className='text-success'>Register</span>
+                Account <span className='text-white'>Register</span>
               </h1>
               <div className='form-group'>
-                <label htmlFor='name'>Your Name:</label>
+                <label className='text-white' htmlFor='name'>
+                  Your Name:
+                </label>
                 <input
                   type='text'
                   className='form-control'
@@ -83,7 +85,9 @@ const Register = (props) => {
                 />
               </div>
               <div className='form-group'>
-                <label htmlFor='email'>Your Email:</label>
+                <label className='text-white' htmlFor='email'>
+                  Your Email:
+                </label>
 
                 <input
                   type='email'
@@ -98,7 +102,9 @@ const Register = (props) => {
               </div>
 
               <div className='form-group'>
-                <label htmlFor='password'>Create a Password:</label>
+                <label className='text-white' htmlFor='password'>
+                  Create a Password:
+                </label>
                 <div className='input-group'>
                   <input
                     ref={ref}
@@ -119,12 +125,14 @@ const Register = (props) => {
                   </span>
                   {/* </div> */}
                 </div>
-                <small className='text-black-50'>
-                  Your password should contain six characters minimum
+                <small className='text-white'>
+                  Your password should contain six or more characters
                 </small>
               </div>
               <div className='form-group'>
-                <label htmlFor='password2'>Confirm Password:</label>
+                <label className='text-white' htmlFor='password2'>
+                  Confirm Password:
+                </label>
                 <input
                   type='password'
                   className='form-control'
