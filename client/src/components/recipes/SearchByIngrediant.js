@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchByIngrediant = () => {
   return (
-    <div className='jumbotron p-1 mt-3 border border-white'>
+    <div className='jumbotron p-1 mt-3 '>
       <div className='row'>
         <div className='col mx-auto form p-4'>
           <div className='px-2 '>

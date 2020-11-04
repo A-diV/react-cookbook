@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-import SearchByName from '../layout/SearchByName';
-import SearchByIngrediant from '../layout/SearchByIngrediant';
-import CustomSearch from '../layout/CustomSearch';
+import SearchByName from './SearchByName';
+import SearchByIngrediant from './SearchByIngrediant';
+import CustomSearch from './CustomSearch';
 
 const Search = () => {
   const [selected, setSelected] = useState('name');
 
   return (
-    <div>
-      <div className='d-flex row mt-2'>
+    <div className='anyClass'>
+      <div className='row mt-2'>
         <div className='col-md-12'>
           <label className='radio text-white'>
             Search by recipe name

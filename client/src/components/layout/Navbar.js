@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
@@ -55,7 +55,7 @@ function Navbar({ title, icon }) {
   );
 
   return (
-    <div className='navbar bg-dark'>
+    <div className='navbar  bg-dark'>
       <h1 className='sitename text-white'>
         <i id='iconSize' className={icon} /> {title}
       </h1>
