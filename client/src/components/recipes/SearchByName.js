@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import uuid from 'react-uuid';
 // import recipeContext from '../../context/recipe/recipeContext';
 // import Spinner from '../layout/Spinner';
 
@@ -75,7 +76,7 @@ const SearchByName = () => {
               <div className='mt-6 row'>
                 {JSON.stringify(recipes.recipesObj) !== JSON.stringify({}) &&
                   recipes.recipesObj.hits.map((recipe) => (
-                    <div class='col-md-6 '>
+                    <div key={uuid()} className='col-md-6 '>
                       <div key={recipe.image} className='card-body '>
                         <div className='card-img-top border border-white'>
                           <img
@@ -102,7 +103,7 @@ const SearchByName = () => {
                             <a href={recipe.recipe.url}>
                               <i
                                 title='Click me'
-                                class='fas fa-external-link-alt linkTo pl-2'
+                                className='fas fa-external-link-alt linkTo pl-2'
                               ></i>{' '}
                             </a>
                           </p>
@@ -125,7 +126,10 @@ const SearchByName = () => {
                                 (' ',
                                 recipe.recipe.dietLabels.length > 0 ? (
                                   recipe.recipe.dietLabels.map((label) => (
-                                    <span className='badge badge-pill badge-success'>
+                                    <span
+                                      key={uuid()}
+                                      className='badge badge-pill badge-success'
+                                    >
                                       {label}
                                     </span>
                                   ))
@@ -138,15 +142,17 @@ const SearchByName = () => {
                             </span>
                             <br />
                             <span className='textColor font-weight-bold'>
-                              {/* Health Label:{' '} */}
                               {
-                                <div className='row  '>
+                                <div className='row '>
                                   <div className='col-5.5 ml-3 mr-1'>
                                     Health Label:
                                   </div>
                                   <div className='col-6 pl-0 pr-0 text-wrap '>
                                     {recipe.recipe.healthLabels.map((label) => (
-                                      <span className='badge badge-pill badge-success'>
+                                      <span
+                                        key={uuid()}
+                                        className='badge badge-pill badge-success '
+                                      >
                                         {label}
                                       </span>
                                     ))}
