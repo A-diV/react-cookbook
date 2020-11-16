@@ -48,15 +48,21 @@ const Register = (props) => {
   };
   const ref = createRef();
 
+  const [value, setvalue] = useState('Show Password');
+
   const showHidePassword = (e) => {
     e.preventDefault();
-    if (e.target.className === 'fa fa-eye-slash') {
+
+    if (e.target.className === 'fas fa-square') {
       e.target.className = '';
       ref.current.type = 'text';
-      e.target.className = 'fa fa-eye';
+      e.target.className = 'fas fa-check-square';
+      setvalue('Hide Password');
     } else {
       ref.current.type = 'password';
-      e.target.className = 'fa fa-eye-slash';
+      e.target.className = 'fas fa-square';
+
+      setvalue('Show Password');
     }
   };
   return (
@@ -66,7 +72,7 @@ const Register = (props) => {
         <div className='col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto  form p-4 mt-5'>
           <div className='px-2 '>
             <form onSubmit={onSubmit}>
-              <h1 className='text-black-50 text-center'>
+              <h1 className='text-black-50 text-center text-wrap'>
                 Account <span className='text-white'>Register</span>
               </h1>
               <div className='form-group'>
@@ -120,14 +126,19 @@ const Register = (props) => {
                     minLength='6'
                   />
                   {/* <div className='input-group-append'> */}
-                  <span onClick={showHidePassword} className='input-group-text'>
+                  {/* <span onClick={showHidePassword} className='input-group-text'>
                     <i className='fa fa-eye-slash'></i>
-                  </span>
+                  </span> */}
                   {/* </div> */}
                 </div>
-                <small className='text-white'>
+                <small className='text-white-50 text-wrap'>
                   Your password should contain six or more characters
                 </small>
+                <br />
+                <span>
+                  <i onClick={showHidePassword} className='fas fa-square '></i>
+                  <span className='text-white showPass pl-1'>{value}</span>
+                </span>
               </div>
               <div className='form-group'>
                 <label className='text-white' htmlFor='password2'>

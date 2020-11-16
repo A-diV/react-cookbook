@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import SearchByName from './SearchByName';
 import SearchByIngrediant from './SearchByIngrediant';
-import CustomSearch from './CustomSearch';
+// import CustomSearch from './CustomSearch';
 
 const Search = () => {
   const [selected, setSelected] = useState('name');
@@ -11,7 +11,7 @@ const Search = () => {
     <div className='anyClass'>
       <div className='row mt-2'>
         <div className='col-md-12'>
-          <label className='radio text-white'>
+          <label className='radio text-white mb-3 mt-3'>
             Search by recipe name
             <input
               type='radio'
@@ -35,7 +35,7 @@ const Search = () => {
             />
             <span className='checkround'></span>
           </label>
-          <label className='radio text-white'>
+          {/* <label className='radio text-white'>
             Customized search
             <input
               type='radio'
@@ -46,12 +46,12 @@ const Search = () => {
               onChange={(e) => setSelected(e.target.value)}
             />
             <span className='checkround'></span>
-          </label>
+          </label> */}
         </div>
       </div>
       {selected === 'name' && <SearchByName />}
       {selected === 'ingrediant' && <SearchByIngrediant />}
-      {selected === 'custom' && <CustomSearch />}
+      {/* {selected === 'custom' && <CustomSearch />} */}
     </div>
   );
 };

@@ -1,7 +1,10 @@
 export const ADD_RECIPE = 'ADD_RECIPE';
+export const GET_RECIPES = 'GET_RECIPES';
+export const RECIPE_ERROR = 'RECIPE_ERROR';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
 export const FILTER_RECIPES = 'FILTER_RECIPES';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
+export const CLEAR_RECIPES = 'CLEAR_RECIPES';
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 

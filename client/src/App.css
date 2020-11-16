@@ -1,11 +1,29 @@
+html,
 body {
-  font-family: 'Open Sans';
-  /* background-color: rgb(164, 168, 166); */
-  background-color: #292b2c;
+  font-family: 'Montserrat';
+  height: 100%;
+  margin: 0;
+  background-color: #839b97;
+}
+.searchH1,
+.savedRecipesH1 {
+  font-family: 'Times New Roman', Times, serif;
+}
+.navbar,
+.footer {
+  background-color: #34626c;
+}
+.col-xl-5 {
+  background-color: #657774;
+  border-radius: 30px;
+  margin-bottom: 7em;
+}
+.border-2 {
+  border-width: 2px !important;
 }
 .jumbotron {
-  /* background-color: dimgray; */
-  background-color: #292b2c;
+  background-color: #657774;
+  border-radius: 30px;
   margin-bottom: 7em;
 }
 .App {
@@ -15,22 +33,14 @@ body {
   color: brown;
 } */
 .sitename {
-  color: brown;
+  /* color: brown; */
   font-family: cursive;
   font-weight: bolder;
-  /* padding-left: 5rem; */
 }
 #iconSize {
   font-size: 2rem;
 }
-.links {
-  list-style-type: none;
-  display: flex;
-  color: aliceblue;
-}
-.links li {
-  margin: 0 10px;
-}
+
 div,
 .card {
   white-space: nowrap;
@@ -39,7 +49,7 @@ div,
 }
 
 /* Animatio for fading */
-/* .item-enter {
+.item-enter {
   opacity: 0;
 }
 .item-enter-active {
@@ -56,7 +66,15 @@ div,
   opacity: 0.01;
 
   transition: opacity 1000ms ease-in;
-} */
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
 
 /* Register */
 form:before {
@@ -69,21 +87,20 @@ form:before {
   /* background-color: rgba(0, 0, 0, 0.3); */
   background-color: rgba(166, 172, 167, 0.295);
   z-index: -1;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 /*############################################*/
 .cust-btn {
-  /* background-color: #35a55b; */
-  background-color: #3da83d;
+  background-color: #0ec58e;
   border-width: 3px;
-  /* border-color: #3da83d; */
   color: #fff;
 }
 .cust-btn:hover {
   /* border-color: #3da83d; */
   background-color: #c3cad3;
   color: #101110;
+
   border-radius: 20px;
   transform-style: 2s;
 }
@@ -102,16 +119,20 @@ form:before {
 /* @media all and (min-width: 992px) { */
 .navLink:hover {
   text-decoration: none;
-
-  /* text-decoration: none; */
-  /* color: brown !important; */
-  /* font-weight: 400; */
   text-transform: uppercase;
 }
 .navLink,
 .navLink:after,
 .navLink:before {
   transition: all 0.2s;
+}
+
+.links {
+  color: white;
+}
+.navLink,
+.pipe {
+  font-size: small;
 }
 /* } */
 /*############################################*/
@@ -121,7 +142,7 @@ form:before {
   position: relative;
   padding-left: 30px;
   padding-right: 20px;
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
   cursor: pointer;
   font-size: 20px;
   -webkit-user-select: none;
@@ -144,7 +165,8 @@ form:before {
   height: 20px;
   width: 20px;
   background-color: #fff;
-  border-color: #0a0a0a;
+  /* border-color: #0a0a0a; */
+  border-color: #2d808b;
   border-style: solid;
   border-width: 2px;
   border-radius: 50%;
@@ -168,11 +190,12 @@ form:before {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #0a0a0a;
+  /* background: #0a0a0a; */
+  background: #2d808b;
 }
 @media only screen and (max-width: 600px) {
   .radio {
-    transform: scale(0.7);
+    transform: scale(0.8);
     display: block;
   }
 }
@@ -191,19 +214,40 @@ form:before {
   overflow-y: scroll;
 }
 
-/* Text wrap in searchByName */
-/* .limit {
-
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
-} */
 .textColor {
   color: #c3cad3;
 }
 .linkTo:hover {
   color: crimson;
   scale: 1.5;
+}
+
+/* Health Label badges for mobile */
+@media only screen and (max-width: 600px) {
+  .healthLabelRow {
+    display: flex;
+    flex-direction: column;
+  }
+  .healthLabelCol {
+    align-self: center;
+  }
+}
+.fa {
+  font-size: 30px;
+  color: red;
+  position: absolute;
+  right: 20px;
+  top: 24px;
+  background-color: white;
+  width: 35px !important;
+  height: 35px;
+  border-radius: 50%;
+  padding-left: 3px;
+  padding-top: 3px;
+}
+.showPass {
+  font-size: small;
+}
+.fas {
+  color: #fff;
 }

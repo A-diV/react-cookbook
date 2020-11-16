@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
-import spiner from './spinner.gif';
+import React from 'react';
 
 const Spinner = () => {
-  <Fragment>
-    <img
-      src={spiner}
-      alt='Loading...'
-      style={{ width: '200px', margin: 'auto', display: 'block' }}
-    />
-  </Fragment>;
+  return (
+    <div className='d-flex justify-content-center m-5'>
+      <h1>
+        {' '}
+        <i className='fas fa-spinner fa-puls '></i>{' '}
+      </h1>
+    </div>
+  );
 };
 
 export default Spinner;

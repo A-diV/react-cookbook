@@ -50,6 +50,7 @@ const AuthState = (props) => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
+        // 'Content-Type': 'text/plain',
       },
     };
     try {

@@ -4,10 +4,10 @@ const SearchByIngrediant = () => {
   return (
     <div className='jumbotron p-1 mt-3 '>
       <div className='row'>
-        <div className='col mx-auto form p-4'>
+        <div className='col mx-auto form  pl-4 pr-4'>
           <div className='px-2 '>
             <form>
-              <h1 className='text-center text-white font-italic'>
+              <h1 className='text-center text-white font-italic text-wrap searchH1'>
                 Search by ingrediant
               </h1>
               <div className='form-group'>

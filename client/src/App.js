@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Navbar from './components/layout/Navbar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SavedRecipes from './components/pages/SavedRecipes';
-import About from './components/pages/About';
+// import About from './components/pages/About';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
@@ -34,9 +34,14 @@ const App = () => {
               <div className='container'>
                 <Alerts />
                 <Switch>
-                  <PrivateRoute exact path='/' component={SavedRecipes} />
+                  <PrivateRoute
+                    exact
+                    path='/savedRecipes'
+                    component={SavedRecipes}
+                  />
+                  <Route exact path='/' component={Search} />
                   <Route exact path='/search' component={Search} />
-                  <Route exact path='/about' component={About} />
+                  {/* <Route exact path='/about' component={About} /> */}
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
                 </Switch>

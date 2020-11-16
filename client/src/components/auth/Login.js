@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, createRef } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
+// import { NavLink } from 'react-router-dom';
 
 const Login = (props) => {
   const alertContext = useContext(AlertContext);
@@ -11,7 +12,7 @@ const Login = (props) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push('/');
+      props.history.push('/SavedRecipes');
     }
     if (error === 'Invalid Credentials') {
       setAlert(error, 'danger');
@@ -43,26 +44,33 @@ const Login = (props) => {
 
   const ref = createRef();
 
+  const [value, setvalue] = useState('Show Password');
+
   const showHidePassword = (e) => {
     e.preventDefault();
-    if (e.target.className === 'fa fa-eye-slash') {
+
+    if (e.target.className === 'fas fa-square') {
       e.target.className = '';
       ref.current.type = 'text';
-      e.target.className = 'fa fa-eye';
+      e.target.className = 'fas fa-check-square';
+      setvalue('Hide Password');
     } else {
       ref.current.type = 'password';
-      e.target.className = 'fa fa-eye-slash';
+      e.target.className = 'fas fa-square';
+
+      setvalue('Show Password');
     }
   };
 
   return (
     //<section className='min-vh-100'>
-    <div className='container'>
+    //<div className='formBackground'>
+    <div className='container '>
       <div className='row'>
         <div className='col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto form p-4 mt-5'>
           <div className='px-2 '>
             <form onSubmit={onSubmit}>
-              <h1 className='text-black-50 text-center '>
+              <h1 className='text-black-50 text-center text-wrap'>
                 Account <span className='text-white'>Login</span>
               </h1>
               <div className='form-group'>
@@ -71,7 +79,7 @@ const Login = (props) => {
                 </label>
                 <input
                   className='form-control'
-                  type='text'
+                  type='email'
                   id='email'
                   name='email'
                   placeholder='Email'
@@ -96,10 +104,23 @@ const Login = (props) => {
                     onChange={onChange}
                     required
                   />
-                  <span onClick={showHidePassword} className='input-group-text'>
-                    <i className='fa fa-eye-slash'></i>
-                  </span>
                 </div>
+
+                <span>
+                  <i onClick={showHidePassword} className='fas fa-square '></i>
+                  <span className='text-white showPass pl-1'>{value}</span>
+                </span>
+                {/* <label className='checkBoxContainer text-white '>
+                  Show Password
+                  <input
+                    type='checkbox'
+                    className='custom-control-input '
+                    checked={checkBox}
+                    onChange={showHidePassword}
+                  />
+                  <span className='checkmark'></span>
+                  <i className='fa fa-eye-slash text-black-50'></i>
+                </label> */}
               </div>
               <div className='form-group'>
                 <button
@@ -115,8 +136,7 @@ const Login = (props) => {
         </div>
       </div>
     </div>
-    //
-    // </section>
+    //</div>
   );
 };
 
