@@ -3,10 +3,10 @@ const connectDB = require('./config/db');
 
 const app = express();
 
-// Connect Datatabase
+// Connect Data base
 connectDB();
 
-// Innit Midleware
+// Innit Middleware
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.json({ msg: 'Hello there...' }));

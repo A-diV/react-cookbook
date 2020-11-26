@@ -15,9 +15,10 @@ import AlertState from './context/alert/AlertState';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 import setAuthToken from './utils/setAuthToken';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
-//import RecipeContext from './context/recipe/RecipeState';
+import SearchByIngredient from './components/recipes/SearchByIngredient';
+import SearchByName from './components/recipes/SearchByName';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -34,16 +35,19 @@ const App = () => {
               <div className='container'>
                 <Alerts />
                 <Switch>
+               
                   <PrivateRoute
                     exact
                     path='/savedRecipes'
                     component={SavedRecipes}
                   />
-                  <Route exact path='/' component={Search} />
-                  <Route exact path='/search' component={Search} />
+                   <Route exact path={['/', '/search']}component={Search}/>
+                  {/* <Route exact path='/search' component={Search} /> */}
                   {/* <Route exact path='/about' component={About} /> */}
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
+                  <Route  path='/'><h1 className='text-center text-danger text-wrap mt-4'>OOPS...<br/> Page not found</h1></Route>
+               
                 </Switch>
               </div>
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../../context/recipe/recipeContext';
 
@@ -7,23 +7,23 @@ const RecipeItem = ({ recipe }) => {
 
   const { deleteRecipe } = recipeContext;
 
-  const { id, label, healthLabel, image } = recipe; //url
+  const { _id, label, healthLabel, image } = recipe; //url
 
   const onDelete = () => {
-    deleteRecipe(id);
+    deleteRecipe(_id);
   };
 
   if (recipe) {
     return (
-      <div className='container '>
-        <div className='row align-items-center border-bottom mb-1 pb-1 '>
-          <div className='col-2 '>
-            <img src={image} alt={label}></img>{' '}
+      <div className='container-fluid'>
+        <div className='row d-flex  justify-content-between align-items-center border-bottom mb-1 pb-1 '>
+          <div className='col-2'>
+            <img className='img-fluid rounded' src={image} alt={label}></img>{' '}
           </div>
           <div className='col '>
             <h6 className='text-white text-wrap '>{label}</h6>
           </div>
-          <div className='col  '>
+          <div className='col '>
             <h6
               className={
                 'ml-3 badge ' +
@@ -37,10 +37,10 @@ const RecipeItem = ({ recipe }) => {
                 : 'No-label'}
             </h6>
           </div>
-          <div className='col-4'>
+          <div className='col-4 text-right  '>
             <button className='view-btn btn btn-info btn-sm mr-3'>View</button>
             <button
-              className='delete-btn btn btn-danger  btn-sm'
+              className='delete-btn btn btn-danger  btn-sm '
               onClick={onDelete}
             >
               Delete

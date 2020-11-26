@@ -1,10 +1,11 @@
 import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import RecipeContext from '../../context/recipe/recipeContext';
 
-function Navbar({ title, icon }) {
+
+function Navbar({ title, icon}) {
   const authContext = useContext(AuthContext);
   const recipeContext = useContext(RecipeContext);
 
@@ -20,6 +21,7 @@ function Navbar({ title, icon }) {
     <Fragment>
       <li>
         <NavLink
+         
           activeClassName='selected'
           activeStyle={{
             borderBottom: 'solid',
@@ -29,12 +31,13 @@ function Navbar({ title, icon }) {
           to='/search'
         >
           Search
-        </NavLink>
+        </NavLink>  
       </li>
       <li className='userName'>
         {' '}
         {/* {user && 'My'}{' '} */}
         <NavLink
+       
           activeClassName='selected'
           activeStyle={{
             borderBottom: 'solid',
@@ -47,10 +50,10 @@ function Navbar({ title, icon }) {
         </NavLink>
       </li>
       <li>
-        <a className='navLink' onClick={onLogout} href='/search'>
+        <NavLink className='navLink' onClick={onLogout} to='/search'>
           <i className='fas fa-sign-out-alt text-white'></i>
           <span className=' hide-sm text-white'>Logout</span>
-        </a>
+        </NavLink>
       </li>
     </Fragment>
   );
@@ -66,8 +69,9 @@ function Navbar({ title, icon }) {
           }}
           className='navLink text-white mr-3 pb-1'
           to='/search'
+          
         >
-          Search
+          Search 
         </NavLink>
       </li>
       <li>
@@ -105,6 +109,7 @@ function Navbar({ title, icon }) {
       </h1>
       <ul className='links nav justify-content-end'>
         {isAuthenticated ? authLinks : guestLinks}
+      
       </ul>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import SearchByName from './SearchByName';
-import SearchByIngrediant from './SearchByIngrediant';
+import SearchByIngredient from './SearchByIngredient';
 // import CustomSearch from './CustomSearch';
 
 const Search = () => {
@@ -24,33 +24,21 @@ const Search = () => {
             <span className='checkround'></span>
           </label>
           <label className='radio text-white'>
-            Search by ingrediant
+            Search by ingredient
             <input
               type='radio'
-              id='ingrediant'
-              name='ingrediant'
-              value='ingrediant'
-              checked={selected === 'ingrediant'}
+              id='ingredient'
+              name='ingredient'
+              value='ingredient'
+              checked={selected === 'ingredient'}
               onChange={(e) => setSelected(e.target.value)}
             />
             <span className='checkround'></span>
           </label>
-          {/* <label className='radio text-white'>
-            Customized search
-            <input
-              type='radio'
-              id='custom'
-              name='custom'
-              value='custom'
-              checked={selected === 'custom'}
-              onChange={(e) => setSelected(e.target.value)}
-            />
-            <span className='checkround'></span>
-          </label> */}
         </div>
       </div>
       {selected === 'name' && <SearchByName />}
-      {selected === 'ingrediant' && <SearchByIngrediant />}
+      {selected === 'ingredient' && <SearchByIngredient />}
       {/* {selected === 'custom' && <CustomSearch />} */}
     </div>
   );

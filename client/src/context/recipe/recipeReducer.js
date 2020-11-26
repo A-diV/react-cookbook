@@ -4,10 +4,11 @@ import {
   DELETE_RECIPE,
   FILTER_RECIPES,
   CLEAR_FILTER,
-  SET_ALERT,
-  REMOVE_ALERT,
+  //SET_ALERT,
+  //REMOVE_ALERT,
   RECIPE_ERROR,
   CLEAR_RECIPES,
+  FIND_RECIPE,
 } from '../types';
 
 const recipeReducer = (state, action) => {
@@ -21,14 +22,29 @@ const recipeReducer = (state, action) => {
     case ADD_RECIPE:
       return {
         ...state,
-        recipes: [...state.recipes, action.payload],
+        recipes: [action.payload, ...state.recipes],
         loading: false,
       };
+    case FIND_RECIPE:
+      return {
+        ...state,
+        isSaved: state.recipes.filter((recipe) => {
+          const regex = new RegExp(`${action.payload}`, `gi`);
 
+          if (recipe.image.match(regex)) {
+            console.log(regex);
+            return true;
+          } else {
+            return false;
+          }
+        }),
+      };
     case DELETE_RECIPE:
       return {
         ...state,
-        recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
+        recipes: state.recipes.filter(
+          (recipe) => recipe._id !== action.payload
+        ),
         loading: false,
       };
     case FILTER_RECIPES:

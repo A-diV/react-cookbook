@@ -11,9 +11,10 @@ const RecipeFilter = () => {
       text.current.value = '';
     }
   });
+
   const onChange = (e) => {
     if (text.current.value !== '') {
-      filterRecipes(e.target.value);
+      filterRecipes(e.target.value); //
     } else {
       clearFilter();
     }
@@ -24,9 +25,9 @@ const RecipeFilter = () => {
       <div className='form-group'>
         <input
           className='form-control input-sm'
-          ref={text}
           type='text'
           placeholder='Filter recipes...'
+          ref={text}
           onChange={onChange}
         />
       </div>

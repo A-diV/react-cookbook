@@ -9,7 +9,7 @@ const Recipe = require('../models/Recipes');
 //const { createRef } = require('react');
 
 // @route    GET api/recipes
-// @desc     Get all recipes
+// @desc     Get all user recipes
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
@@ -28,18 +28,19 @@ router.post(
   '/',
   [
     auth,
-    [
-      check('label', 'Recipe label is required').not().isEmpty(),
-      check('image', 'Recipe image is required').not().isEmpty(),
-      check('url', 'Recipe URL is required').not().isEmpty(),
-    ],
+    // [
+    //   check('label', 'Recipe label is required').not().isEmpty(),
+    //   check('image', 'Recipe image is required').not().isEmpty(),
+    //   check('url', 'Recipe URL is required').not().isEmpty(),
+    // ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { label, image, healthLabel, url } = req.body;
+    const { label, image, url } = req.body;
+    const healthLabel = req.body.dietLabels[0];
 
     try {
       const newRecipe = new Recipe({
@@ -63,8 +64,19 @@ router.post(
 // @route    DELETE api/recipes/:id
 // @desc     Delete recipe
 // @access   Private
-router.delete('/:id', (req, res) => {
-  res.send('Delete recipe');
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    var mongoose = require('mongoose');
+    const id = req.params.id.slice(1);
+
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      await Recipe.deleteOne({ _id: id });
+    }
+    res.json(Recipe);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).sendStatus('Server Error');
+  }
 });
 
 module.exports = router;

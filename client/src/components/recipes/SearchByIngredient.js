@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchByIngrediant = () => {
+const SearchByIngredient = () => {
   return (
     <div className='jumbotron p-1 mt-3 '>
       <div className='row'>
@@ -8,11 +8,11 @@ const SearchByIngrediant = () => {
           <div className='px-2 '>
             <form>
               <h1 className='text-center text-white font-italic text-wrap searchH1'>
-                Search by ingrediant
+                Search by ingredient
               </h1>
               <div className='form-group'>
-                <label htmlFor='ingrediant' className='text-white'>
-                  Ingrediant:
+                <label htmlFor='ingredient' className='text-white'>
+                  Ingredient:
                 </label>
                 <input
                   className='form-control'
@@ -37,4 +37,4 @@ const SearchByIngrediant = () => {
   );
 };
 
-export default SearchByIngrediant;
+export default SearchByIngredient;

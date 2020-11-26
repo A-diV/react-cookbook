@@ -7,34 +7,28 @@ import AuthContext from '../../context/auth/authContext';
 import RecipeContext from '../../context/recipe/recipeContext';
 
 const SearchByName = () => {
-  const [recipes, setRecipes] = useState({
+  const [recipesFromAPI, setRecipes] = useState({
     recipesObj: {},
     loading: false,
   });
 
   const recipeContext = useContext(RecipeContext);
-  const { addRecipe } = recipeContext;
+  const { addRecipe, recipes, getRecipes, deleteRecipe } = recipeContext;
 
   const authContext = useContext(AuthContext);
   const { isAuthenticated } = authContext;
 
   const [searchStr, setSearchStr] = useState('');
-  // const [iconClass, setIconClass] = useState({ name: 'fa fa-heart-o' });
-
-  // const ref = createRef();
-
   const onChange = (e) => setSearchStr(e.target.value);
 
   const fetchData = async () => {
     try {
-      setRecipes({ ...recipes, loading: true });
+      setRecipes({ ...recipesFromAPI, loading: true });
 
       const res = await axios.get(
-        `https://api.edamam.com/search?q=${searchStr}&app_id=${process.env.REACT_APP_COOKBOOK_API_ID}&app_key=${process.env.REACT_APP_COOKBOOK_API_SECRET}&from=0&to=4`
+        `https://api.edamam.com/search?q=${searchStr}&app_id=${process.env.REACT_APP_COOKBOOK_API_ID}&app_key=${process.env.REACT_APP_COOKBOOK_API_SECRET}&from=0&to=10`
       );
-
       setRecipes({ recipesObj: res.data, loading: false });
-
       setSearchStr('');
     } catch (err) {
       console.error(err);
@@ -47,27 +41,49 @@ const SearchByName = () => {
   };
 
   useEffect(() => {
+    getRecipes();
     if (searchStr !== '') {
     }
     // eslint-disable-next-line
-  }, [recipes]);
+  }, [recipesFromAPI]);
 
   const removeRecipe = (recipe) => {
-    const { label, image, dietLabels } = recipe.recipe;
-    console.log('REMOVING RECIPE: \n', image, '\n', label, '\n', dietLabels[0]);
+    const { image } = recipe;
+    if (recipes.length === 1) {
+      deleteRecipe(recipes[0]._id);
+    } else {
+      let toRemove = recipes.find((rec) => rec.image === image);
+      deleteRecipe(toRemove._id);
+    }
+  };
+
+  const isSavedRecipe = (img) => {
+    if (recipes.length === 0) {
+      return 'fa fa-heart-o';
+    } else if (recipes.length === 1) {
+      if (recipes[0].image === img) {
+        return 'fa fa-heart';
+      } else {
+        return 'fa fa-heart-o';
+      }
+    } else {
+      if (recipes.find((rec) => rec.image === img)) {
+        return 'fa fa-heart';
+      } else {
+        return 'fa fa-heart-o';
+      }
+    }
   };
 
   const changeClass = (e, recipe) => {
-    const rec = {
-      label: recipe.recipe.label,
-      image: recipe.recipe.image,
-      healthLabel: recipe.recipe.dietLabels[0],
-      url: recipe.recipe.url,
-    };
-
-    e.target.className === 'fa fa-heart-o'
-      ? (e.target.className = 'fa fa-heart') && addRecipe(rec)
-      : (e.target.className = 'fa fa-heart-o') && removeRecipe(recipe);
+    //e.stopPropagation();
+    if (e.target.className === 'fa fa-heart-o') {
+      e.target.className = 'fa fa-heart';
+      addRecipe(recipe);
+    } else {
+      e.target.className = 'fa fa-heart-o';
+      removeRecipe(recipe);
+    }
   };
 
   return (
@@ -101,23 +117,25 @@ const SearchByName = () => {
                 </button>
               </div>
             </form>
-            {recipes.loading ? (
+            {recipesFromAPI.loading ? (
               <Spinner />
             ) : (
               <div className='col-14 '>
                 <div className='mt-6 row'>
-                  {JSON.stringify(recipes.recipesObj) !== JSON.stringify({}) &&
-                    recipes.recipesObj.hits.map((recipe) => (
+                  {JSON.stringify(recipesFromAPI.recipesObj) !==
+                    JSON.stringify({}) &&
+                    recipesFromAPI.recipesObj.hits.map((recipe) => (
                       <div key={uuid()} className='col-md-6 '>
-                        <div key={recipe.image} className='card-body '>
+                        <div key={recipe.recipe.image} className='card-body '>
                           <div className='card-img-top border border-white'>
                             {isAuthenticated && (
                               <i
-                                onClick={(e) => changeClass(e, recipe)}
-                                className='fa fa-heart-o'
+                                onClick={(e) => changeClass(e, recipe.recipe)}
+                                className={isSavedRecipe(recipe.recipe.image)}
                                 aria-hidden='true'
                               ></i>
                             )}
+
                             <img
                               alt=''
                               className='card-img-top embed-responsive-item'
@@ -167,14 +185,14 @@ const SearchByName = () => {
                                     recipe.recipe.dietLabels.map((label) => (
                                       <span
                                         key={uuid()}
-                                        className='badge badge-pill badge-success '
+                                        className='badge badge-pill badge-success'
                                       >
                                         {label}
                                       </span>
                                     ))
                                   ) : (
-                                    <span className='badge badge-pill badge-warning '>
-                                      Undifined
+                                    <span className='badge badge-pill badge-warning'>
+                                      Undefined
                                     </span>
                                   ))
                                 }
@@ -186,12 +204,12 @@ const SearchByName = () => {
                                     <div className='col-5.5 ml-3 mr-1'>
                                       Health Label:
                                     </div>
-                                    <div className='col-6 pl-0 pr-0 text-wrap healthLabelCol'>
+                                    <div className='col-6 text-wrap healthLabelCol'>
                                       {recipe.recipe.healthLabels.map(
                                         (label) => (
                                           <span
                                             key={uuid()}
-                                            className='badge badge-pill badge-success text-wrap '
+                                            className='badge badge-pill badge-success text-wrap'
                                           >
                                             {label}
                                           </span>

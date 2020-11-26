@@ -10,6 +10,7 @@ import {
   FILTER_RECIPES,
   CLEAR_FILTER,
   CLEAR_RECIPES,
+  FIND_RECIPE,
   //SET_ALERT,
   //REMOVE_ALERT,
 } from '../types';
@@ -19,6 +20,7 @@ const RecipeState = (props) => {
   const initialState = {
     recipes: null,
     filtered: null,
+    isSaved: false,
     error: null,
   };
 
@@ -35,6 +37,16 @@ const RecipeState = (props) => {
     }
   };
 
+  //Find Recipe
+  // const findRecipe = async (image) => {
+  //   try {
+  //     await axios.get(`/api/recipes?image=${image}`);
+  //     dispatch({ type: FIND_RECIPE, payload: image });
+  //   } catch (err) {
+  //     dispatch({ type: RECIPE_ERROR, payload: err.response.msg });
+  //   }
+  // };
+
   // ADD Recipe
   const addRecipe = async (recipe) => {
     const config = {
@@ -43,9 +55,9 @@ const RecipeState = (props) => {
         //'Content-Type': 'text/plain',
       },
     };
+
     try {
       const res = await axios.post('/api/recipes', recipe, config);
-
       dispatch({ type: ADD_RECIPE, payload: res.data });
     } catch (err) {
       dispatch({ type: RECIPE_ERROR, payload: err.response.msg });
@@ -55,13 +67,10 @@ const RecipeState = (props) => {
   // Delete Recipe
   const deleteRecipe = async (id) => {
     try {
+      await axios.delete(`/api/recipes/'${id}`);
       dispatch({ type: DELETE_RECIPE, payload: id });
-      await axios.deleteRecipe(`/api/recipes/'${id}`);
-      dispatch({ type: DELETE_RECIPE, payload: id });
-      console.log(id);
     } catch (err) {
-      // dispatch({ payload: err.response.msg });
-      dispatch({ type: DELETE_RECIPE, payload: err.response.msg });
+      dispatch({ type: RECIPE_ERROR, payload: err.response.msg });
     }
   };
 
@@ -70,7 +79,7 @@ const RecipeState = (props) => {
     dispatch({ type: CLEAR_RECIPES });
   };
 
-  // Filter Recipies
+  // Filter Recipes
   const filterRecipes = (text) => {
     dispatch({ type: FILTER_RECIPES, payload: text });
   };
@@ -96,6 +105,7 @@ const RecipeState = (props) => {
         addRecipe,
         getRecipes,
         clearRecipes,
+        //findRecipe,
       }}
     >
       {props.children}

@@ -1,18 +1,25 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import RecipeItem from './RecipeItem';
 import RecipeContext from '../../context/recipe/recipeContext';
 import Spinner from '../layout/Spinner';
 
-const Recipes = () => {
-  const recipeContex = useContext(RecipeContext);
+const Recipes = ({ countRecipes }) => {
+  const recipeContext = useContext(RecipeContext);
 
-  const { recipes, filtered, getRecipes, loading } = recipeContex;
+  const { recipes, filtered, getRecipes, loading } = recipeContext;
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     getRecipes();
+    if (recipes !== null && !loading) {
+      setCount(recipes.length);
+      countRecipes(count);
+    }
+
     // eslint-disable-next-line
-  }, []);
+  }, [recipes]);
+
   if (recipes !== null && recipes.length === 0 && !loading) {
     return (
       <div className='col-sm  text-center text-white font-weight-bold font-italic p-2'>
@@ -33,7 +40,11 @@ const Recipes = () => {
               ))
             : recipes.map((recipe) => (
                 <CSSTransition key={recipe._id} timeout={500} classNames='item'>
-                  <RecipeItem key={recipe._id} recipe={recipe} />
+                  <RecipeItem
+                    key={recipe._id}
+                    recipe={recipe}
+                    //increment={(recipeCount) => setCount(recipeCount)}
+                  />
                 </CSSTransition>
               ))}
         </TransitionGroup>
